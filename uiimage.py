@@ -39,18 +39,18 @@ def convert_csv_to_excel():
 # Création de la fenêtre principale
 root = tk.Tk()
 root.title("Convertisseur CSV en Excel")
-
+root.config(background='greenyellow')
 # Charger l'image
-image_path = "st.png"  # Remplacez par le chemin vers votre image
+image_path = "logo_svg.png"  # Remplacez par le chemin vers votre image
 img = PhotoImage(file=image_path)
 
 # Ajouter une étiquette avec l'image
 image_label = tk.Label(root, image=img)
-image_label.pack(padx=20, pady=10)
+image_label.pack(padx=10, pady=10)
 
 # Ajouter un bouton pour lancer la conversion
 convert_button = tk.Button(root, text="Convertir CSV en Excel", command=convert_csv_to_excel)
-convert_button.pack(padx=20, pady=20)
+convert_button.pack(padx=0, pady=0)
 
 # Lancer l'application Tkinter
 root.mainloop()
