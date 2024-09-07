@@ -14,7 +14,7 @@
         "ms-vscode-remote.remote-containers"
     ],
     "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
-    "forwardPorts": [],
+    "forwardPorts": [8080],
     "remoteUser": "vscode",
     "containerUser": "vscode",
     "runArgs": [

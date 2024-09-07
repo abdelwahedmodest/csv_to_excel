@@ -2,26 +2,24 @@
 FROM ubuntu:latest
 
 # Installer Python 3.11 et pip
-RUN apt-get update && apt-get install -y python3.11 python3.11-venv python3-pip
-
-# Installer Tkinter pour Ubuntu
-RUN apt-get install -y python3-tk
-
-# Installer git pour le contrôle de version
-RUN apt-get install -y git
+RUN apt-get update && apt-get install -y \
+    python3.11 python3.11-venv python3-pip \
+    python3-tk git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Définir Python 3.11 comme version par défaut
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
 
-# Copier le fichier requirements.txt et installer les dépendances
-COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
-
 # Créer un répertoire de travail
 WORKDIR /app
 
-# Copier tout le contenu de ton projet dans le conteneur
-COPY . /app
+# Copier le fichier requirements.txt et installer les dépendances
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copier tout le contenu de votre projet dans le conteneur
+COPY . .
 
 # Exposer les ports (si nécessaire, par exemple pour une interface web)
 # EXPOSE 8080
