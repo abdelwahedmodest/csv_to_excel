@@ -8,4 +8,7 @@ six==1.16.0
 tzdata==2024.1
 pandas
 openpyxl
+<<<<<<< HEAD
 
+=======
+>>>>>>> e7ae9efc30f09d6435626a91c1aa2f74e45b420b
