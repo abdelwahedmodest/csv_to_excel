@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -y \
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
 
 # Créer un répertoire de travail
-WORKDIR /app
+WORKDIR /
 #/C:/Users/lenovo/Desktop/Waiting/Septembre/06092024/1      ==>ask  chatgpt about   path
 
 # Copier le fichier requirements.txt et installer les dépendances
-COPY ./requirements.txt .
+COPY /requirements.txt  .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copier tout le contenu de votre projet dans le conteneur
