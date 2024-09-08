@@ -1,29 +1,21 @@
-# Utiliser l'image de base Ubuntu
-FROM ubuntu:latest
+# Use an official Python runtime as a parent image
+FROM python:3.9.0
 
-# Installer Python 3.11 et pip
-RUN apt-get update && apt-get install -y \
-    python3.11 python3.11-venv python3-pip \
-    python3-tk git \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# Set the working directory in the container
+WORKDIR /c/Users/lenovo/Desktop/Waiting/Septembre/06092024/1
 
-# Définir Python 3.11 comme version par défaut
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
+# Copy the requirements file into the container at /usr/src/app/
+COPY requirements.txt .
 
-# Créer un répertoire de travail
-WORKDIR /
-#/C:/Users/lenovo/Desktop/Waiting/Septembre/06092024/1      ==>ask  chatgpt about   path
-
-# Copier le fichier requirements.txt et installer les dépendances
-COPY /requirements.txt  .
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier tout le contenu de votre projet dans le conteneur
+# Copy the current directory contents into the container at /usr/src/app/
 COPY . .
 
-# Exposer les ports (si nécessaire, par exemple pour une interface web)
-EXPOSE 8080
+# Make port 8000 available to the world outside this container
+EXPOSE 8000
+
 
 # Définir la commande de démarrage
 CMD ["python", "main.py"]
