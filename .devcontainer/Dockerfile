@@ -16,7 +16,7 @@ WORKDIR /app
 #/C:/Users/lenovo/Desktop/Waiting/Septembre/06092024/1      ==>ask  chatgpt about   path
 
 # Copier le fichier requirements.txt et installer les dépendances
-COPY requirements.txt .
+COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copier tout le contenu de votre projet dans le conteneur
